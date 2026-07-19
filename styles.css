@@ -16,10 +16,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
+  overflow-x: clip;
   color: var(--ink);
   background:
     linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
@@ -29,6 +33,7 @@ body {
     linear-gradient(135deg, #f4e7c8, #d7bb7d 52%, #b98f52);
   background-size: 6px 6px, 6px 6px, auto, auto, auto;
   font-family: Georgia, "Times New Roman", serif;
+  overflow-wrap: anywhere;
 }
 
 img {
@@ -109,6 +114,7 @@ a {
   width: min(1120px, calc(100% - 32px));
   transform: translateX(-50%);
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
   font-family: "Arial Narrow", Arial, sans-serif;
@@ -209,6 +215,7 @@ a {
 
 .section {
   width: min(1160px, calc(100% - 28px));
+  max-width: 100%;
   margin: 0 auto;
   padding: 82px 0;
 }
@@ -376,7 +383,8 @@ figcaption {
 .archive {
   color: var(--cream);
   background: var(--ink);
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   padding-inline: max(14px, calc((100% - 1160px) / 2));
   border-top: 8px solid var(--red);
   border-bottom: 8px solid var(--red);
@@ -469,8 +477,8 @@ figcaption {
 @media (max-width: 860px) {
   .topbar {
     justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 4px;
+    overflow: visible;
+    padding-bottom: 0;
   }
 
   .hero__inner {
@@ -483,6 +491,7 @@ figcaption {
     justify-self: start;
     width: min(100%, 430px);
     transform: rotate(0deg);
+    box-shadow: 8px 8px 0 var(--red);
   }
 
   .hero h1 {
@@ -523,6 +532,12 @@ figcaption {
     position: relative;
     width: 100%;
     transform: none;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .photo-card:hover {
+    transform: none;
+    box-shadow: 8px 8px 0 var(--ink);
   }
 
   .photo-card--back {
@@ -565,6 +580,32 @@ figcaption {
     padding-top: 74px;
   }
 
+  .hero__poster,
+  .record-card,
+  .poster,
+  .photo-card,
+  .gallery figure,
+  .birthday {
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+
+  .button:hover,
+  .record-card:hover,
+  .poster:hover,
+  .photo-card:hover,
+  .archive-card:hover,
+  .gallery figure:hover {
+    transform: none;
+  }
+
+  .hero__poster,
+  .poster,
+  .photo-card,
+  .archive-card,
+  .gallery figure {
+    max-width: 100%;
+  }
+
   .hero h1 {
     font-size: clamp(52px, 18vw, 86px);
     text-shadow: 3px 3px 0 var(--red), 6px 6px 0 rgba(0, 0, 0, 0.42);
@@ -598,7 +639,6 @@ figcaption {
 
   .birthday {
     padding: 28px 18px;
-    box-shadow: 8px 8px 0 var(--ink);
   }
 }
 
